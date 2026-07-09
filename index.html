@@ -3,75 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Digital Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <title>Farmacia El Botiquín - Catálogo Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- AQUÍ VA EL CSS --- */
+        /* --- ADAPTACIÓN DE COLORES DE LA MARCA --- */
         :root {
-            --bg-color: #fcfaf7;
-            --text-main: #2b2b2b;
-            --text-muted: #707070;
-            --accent: #d4b2a7;
-            --card-bg: #ffffff;
-            --font-serif: 'Playfair Display', serif;
+            --bg-color: #fcfbfa;       /* Fondo limpio con un toque mínimo de calidez */
+            --brand-orange: #ff7a00;   /* El naranja vibrante de Farmacia El Botiquín */
+            --brand-blue: #0033a0;     /* El azul rey institucional */
+            --text-main: #1e293b;      /* Gris oscuro profesional para lectura */
+            --text-muted: #64748b;     /* Gris suave para descripciones secundarias */
+            --card-bg: #ffffff;        /* Blanco puro para destacar productos */
             --font-sans: 'Inter', sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); line-height: 1.6; padding-bottom: 80px; }
-        .main-header { text-align: center; padding: 60px 20px 40px; }
-        .brand-title { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 400; letter-spacing: 1px; margin-bottom: 8px; }
-        .brand-subtitle { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
-        
-        .categories-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .tab-btn { background: none; border: none; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); cursor: pointer; padding: 8px 16px; transition: all 0.3s ease; border-bottom: 1px solid transparent; }
-        .tab-btn.active, .tab-btn:hover { color: var(--text-main); border-bottom: 1px solid var(--text-main); }
-        
-        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-        
-        .product-card { background: var(--card-bg); border-radius: 4px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); }
-        .product-image-wrapper { width: 100%; height: 320px; overflow: hidden; background-color: #f0f0f0; }
-        .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-image { transform: scale(1.04); }
-        .product-info { padding: 20px; }
-        .product-name { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 6px; }
-        .product-price { font-weight: 500; color: var(--text-main); margin-bottom: 10px; }
-        .product-desc { font-size: 0.85rem; color: var(--text-muted); }
-        
-        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; transition: transform 0.3s ease; }
-        .whatsapp-btn:hover { transform: scale(1.05); }
-        .icon-ws { width: 20px; height: 20px; fill: currentColor; }
+        /* --- ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding-bottom: 100px;
+        }
+
+        /* --- ENCABEZADO / BRANDING --- */
+        .main-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, #fff7ed 0%, #fff 100%); /* Sutil destello naranja de fondo */
+            border-bottom: 3px solid var(--brand-orange);
+        }
+
+        /* Contenedor del Logotipo real */
+        .brand-logo-container {
+            margin-bottom: 15px;
+        }
+
+        .brand-logo-img {
+            max-width: 280px; /* Tamaño máximo ideal para que se vea bien en celulares y compus */
+            height: auto;
+            display: inline-block;
+            object-fit: contain;
+        }
+
+        .brand-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        /* --- FILTROS POR CATEGORÍAS (Tabs de Farmacia) --- */
+        .categories-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+            padding: 0 15px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1.5px solid #e2e8f0;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.15);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--brand-orange);
+            color: var(--brand-orange);
+        }
+
+        /* --- CONTENEDOR Y GRID DE PRODUCTOS --- */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- TARJETA DE PRODUCTO --- */
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-color: #e2e8f0;
+        }
+
+        .product-image-wrapper {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background-color: #fff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            height: 2.6em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--brand-orange);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        /* --- BOTÓN DE PEDIDO POR PRODUCTO --- */
+        .order-item-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--brand-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .order-item-btn:hover {
+            background-color: var(--brand-orange);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.2);
+        }
+
+        /* --- BOTÓN FLOTANTE GENERAL --- */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 14px 26px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .icon-ws {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
     </style>
 </head>
 <body>
 
     <header class="main-header">
         <div class="brand-container">
-            <h1 class="brand-title">Nombre del Negocio</h1>
-            <p class="brand-subtitle">Catálogo Exclusivo & Pedidos Directos</p>
+            <div class="brand-logo-container">
+                <img src="farmacia.jpg" alt="Farmacia El Botiquín" class="brand-logo-img">
+            </div>
+            <p class="brand-subtitle">¡Unite a la Familia y Empezá a Ganar! Pedidos Directos</p>
         </div>
     </header>
 
     <nav class="categories-nav">
-        <button class="tab-btn active" data-category="todos">Todos</button>
-        <button class="tab-btn" data-category="novedades">Novedades</button>
-        <button class="tab-btn" data-category="regulares">Colección</button>
+        <button class="tab-btn active" data-category="todos">Todos los Productos</button>
+        <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
+        <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
     </nav>
 
     <main class="catalog-container">
         <div id="grid-productos" class="products-grid"></div>
     </main>
 
-    <a href="https://wa.me/TU_NUMERO" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/50688888888" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" class="icon-ws"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.528 1.975 14.061.951 11.453.951c-5.438 0-9.863 4.372-9.867 9.802-.001 1.836.52 3.631 1.508 5.216l-1.005 3.675 3.774-.973zm13.111-5.696c-.302-.15-1.787-.872-2.063-.972-.276-.1-.477-.15-.677.15-.199.298-.775.971-.951 1.171-.175.199-.35.224-.651.074-1.203-.591-2.103-.97-2.946-2.396-.222-.376.222-.349.635-1.163.063-.125.031-.235-.016-.335-.047-.1-.477-1.136-.653-1.558-.172-.41-.343-.353-.477-.36l-.407-.007c-.14 0-.37.052-.564.259-.194.207-.74.722-.74 1.761 0 1.04.76 2.046.866 2.186.107.14 1.495 2.254 3.621 3.157.506.214.901.343 1.21.439.51.16.974.137 1.34.083.41-.06 1.787-.723 2.037-1.423.251-.7.251-1.3.176-1.423-.075-.125-.276-.2-.578-.35z"/></svg>
-        <span>Consultar Catálogo</span>
+        <span>Enviar Receta por WhatsApp</span>
     </a>
 
     <script>
-        // --- AQUÍ VA EL JAVASCRIPT ---
         document.addEventListener('DOMContentLoaded', () => {
             let todosLosProductos = [];
             const grid = document.getElementById('grid-productos');
@@ -83,16 +273,21 @@
                     todosLosProductos = data;
                     renderizarProductos(todosLosProductos);
                 })
-                .catch(error => console.error('Error cargando el catálogo:', error));
+                .catch(error => console.error('Error al conectar con la base de productos:', error));
 
             function renderizarProductos(lista) {
                 grid.innerHTML = '';
+                
                 if(lista.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No hay productos disponibles.</p>';
+                    grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--text-muted); padding: 40px 0;">No hay artículos disponibles en esta categoría.</p>';
                     return;
                 }
 
                 lista.forEach(prod => {
+                    const numeroTelefono = "50688888888"; 
+                    const mensajeBase = `¡Hola Farmacia El Botiquín! Me gustaría solicitar el siguiente producto: *${prod.nombre}* con precio de *₡${prod.precio}*.`;
+                    const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeBase)}`;
+
                     const card = document.createElement('div');
                     card.className = 'product-card';
                     card.innerHTML = `
@@ -103,6 +298,9 @@
                             <h3 class="product-name">${prod.nombre}</h3>
                             <p class="product-price">₡${prod.precio}</p>
                             <p class="product-desc">${prod.descripcion}</p>
+                            <a href="${urlWhatsApp}" target="_blank" rel="noopener noreferrer" class="order-item-btn">
+                                Solicitar Producto
+                            </a>
                         </div>
                     `;
                     grid.appendChild(card);
