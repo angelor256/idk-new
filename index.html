@@ -3,306 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia El Botiquín - Inicio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-orange: #ff7a00;
-            --brand-blue: #0033a0;
-            --text-dark: #1e293b;
-            --font-sans: 'Inter', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: var(--font-sans);
-            background-color: #fcfbfa;
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Barra de Navegación */
-        .navbar {
-            background-color: #ffffff;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover { color: var(--brand-orange); }
-
-        /* Contenido Principal estilo Facebook */
-        .hero-banner {
-            background: linear-gradient(135deg, #ff9100 0%, #ff6600 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero-logo {
-            max-width: 240px;
-            height: auto;
-            margin-bottom: 25px;
-            background-color: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .hero-title {
-            font-size: 3.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .hero-subtitle {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            background-color: var(--brand-blue);
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,51,160,0.3);
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: #ffffff;
-            color: var(--brand-blue);
-            text-decoration: none;
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 50px;
-            text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            background-color: var(--brand-blue);
-            color: white;
-            box-shadow: 0 12px 24px rgba(0,51,160,0.3);
-        }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="nav-logo">
-            <img src="farmacia.jpg" alt="Logo El Botiquín">
-        </div>
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
-        </div>
-    </nav>
-
-    <header class="hero-banner">
-        <div class="hero-content">
-            <img src="farmacia.jpg" alt="Logo" class="hero-logo">
-            <h1 class="hero-title">¡Unite a la Familia Botiquín!</h1>
-            <div><p class="hero-subtitle">Y empezá a ganar</p></div>
-            <a href="catalogo.html" class="cta-btn">Explorar Catálogo</a>
-        </div>
-    </header>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia El Botiquín - Catálogo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #fcfbfa;
-            --brand-orange: #ff7a00;
-            --brand-blue: #0033a0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --card-bg: #ffffff;
-            --font-sans: 'Inter', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); padding-bottom: 100px; }
-
-        /* Navbar */
-        .navbar { background-color: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-logo img { height: 50px; width: auto; }
-        .nav-menu { display: flex; gap: 20px; }
-        .nav-link { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem; }
-        .nav-link:hover { color: var(--brand-orange); }
-
-        .main-header { text-align: center; padding: 30px 20px 10px; }
-        .brand-logo-img { max-width: 180px; height: auto; }
-
-        .categories-nav { display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap; padding: 0 15px; }
-        .tab-btn { background: var(--card-bg); border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; color: var(--text-muted); cursor: pointer; padding: 10px 20px; border-radius: 30px; transition: all 0.25s ease; }
-        .tab-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
-
-        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-
-        /* Tarjetas de Producto */
-        .product-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: all 0.3s ease; }
-        .product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        .product-image-wrapper { width: 100%; height: 240px; padding: 15px; display: flex; align-items: center; justify-content: center; background: #fff; border-bottom: 1px solid #f8fafc;}
-        .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
-        .product-price { font-size: 1.25rem; font-weight: 700; color: var(--brand-orange); margin-bottom: 4px; }
-        .product-stock { font-size: 0.8rem; font-weight: 600; color: #16a34a; margin-bottom: 12px; }
-        .product-stock.out { color: #dc2626; }
-        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; }
-        
-        .order-item-btn { display: inline-block; width: 100%; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.9rem; font-weight: 600; border-radius: 6px; transition: background 0.2s; }
-        .order-item-btn:hover { background-color: var(--brand-orange); }
-        .order-item-btn.disabled { background-color: #cbd5e1; pointer-events: none; }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="nav-logo"><img src="farmacia.jpg" alt="Logo"></div>
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
-        </div>
-    </nav>
-
-    <header class="main-header">
-        <img src="farmacia.jpg" alt="Farmacia El Botiquín" class="brand-logo-img">
-    </header>
-
-    <nav class="categories-nav">
-        <button class="tab-btn active" data-category="todos">Todos los Productos</button>
-        <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
-        <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
-    </nav>
-
-    <main class="catalog-container">
-        <div id="grid-productos" class="products-grid"></div>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('grid-productos');
-            const botonesFiltro = document.querySelectorAll('.tab-btn');
-            let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
-
-            // Si está vacío, intenta estirar del archivo de texto json estático preliminar
-            if (productos.length === 0) {
-                fetch('productos.json')
-                    .then(res => res.json())
-                    .then(data => {
-                        productos = data;
-                        localStorage.setItem('productos_botiquin', JSON.stringify(productos));
-                        renderizar(productos);
-                    }).catch(() => renderizar([]));
-            } else {
-                renderizar(productos);
-            }
-
-            function renderizar(lista) {
-                grid.innerHTML = '';
-                if(lista.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:30px;">No hay productos registrados en esta categoría.</p>';
-                    return;
-                }
-
-                lista.forEach(prod => {
-                    const numeroTelefono = "50688888888"; // Reemplaza por tu número
-                    const tieneStock = parseInt(prod.stock) > 0;
-                    const stockMsg = tieneStock ? `Stock disponible: ${prod.stock} uds.` : "Agotado temporalmente";
-                    
-                    const mensaje = `¡Hola Farmacia El Botiquín! Me interesa comprar: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
-                    const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
-
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <div class="product-image-wrapper">
-                            <img src="${prod.imagen || 'https://via.placeholder.com/300?text=Sin+Foto'}" class="product-image" alt="${prod.nombre}">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">${prod.nombre}</h3>
-                            <p class="product-price">₡${prod.precio}</p>
-                            <p class="product-stock ${tieneStock ? '' : 'out'}">${stockMsg}</p>
-                            <p class="product-desc">${prod.descripcion}</p>
-                            <a href="${url}" target="_blank" class="order-item-btn ${tieneStock ? '' : 'disabled'}">
-                                ${tieneStock ? 'Solicitar por WhatsApp' : 'Agotado'}
-                            </a>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-
-            botonesFiltro.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    botonesFiltro.forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    const cat = e.target.getAttribute('data-category');
-                    if (cat === 'todos') renderizar(productos);
-                    else renderizar(productos.filter(p => p.categoria === cat));
-                });
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - El Botiquín</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -326,6 +26,24 @@
         .form-control { padding: 10px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-family: var(--font-sans); font-size: 0.95rem; }
         .form-control:focus { outline: none; border-color: var(--brand-blue); }
         
+        /* Estilo especial para el input de archivo */
+        .file-input-wrapper {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        /* Vista previa de la imagen seleccionada */
+        .image-preview {
+            max-width: 1200px;
+            height: 120px;
+            object-fit: contain;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px dashed #cbd5e1;
+            padding: 5px;
+            display: none;
+        }
+        
         .submit-btn { background-color: var(--brand-orange); color: white; border: none; padding: 12px; font-size: 1rem; font-weight: 700; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 10px; width: 100%; transition: background 0.2s; }
         .submit-btn:hover { background-color: #e06b00; }
 
@@ -334,6 +52,7 @@
         .inventory-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
         .inventory-table th, .inventory-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
         .inventory-table th { background-color: #f8fafc; font-weight: 600; }
+        .mini-preview { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: #f8fafc; }
         .delete-btn { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; }
         .delete-btn:hover { background-color: #dc2626; }
     </style>
@@ -365,10 +84,15 @@
                     <label for="stock">Cantidad Disponible (Stock)</label>
                     <input type="number" id="stock" class="form-control" placeholder="Ej: 24" min="0" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="imagen">Enlace (URL) de la Foto del Producto</label>
-                    <input type="url" id="imagen" class="form-control" placeholder="https://ejemplo.com/imagen-medicamento.jpg">
+                    <label for="imagen-file">Foto del Producto (Adjuntar archivo .jpg, .png)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="imagen-file" class="form-control" accept="image/*" required>
+                    </div>
+                    <img id="preview-img" class="image-preview" alt="Vista previa">
                 </div>
+
                 <div class="form-group">
                     <label for="descripcion">Descripción Comercial / Indicaciones</label>
                     <textarea id="descripcion" class="form-control" rows="3" placeholder="Detalla su uso, miligramos o restricciones..." required></textarea>
@@ -382,6 +106,7 @@
             <table class="inventory-table">
                 <thead>
                     <tr>
+                        <th>Foto</th>
                         <th>Producto</th>
                         <th>Categoría</th>
                         <th>Precio</th>
@@ -398,13 +123,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('form-producto');
             const tablaCuerpo = document.getElementById('tabla-cuerpo');
+            const fileInput = document.getElementById('imagen-file');
+            const previewImg = document.getElementById('preview-img');
+            
             let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
+            let imagenBase64String = ""; // Aquí guardaremos la foto convertida temporalmente
 
+            // 1. Lógica para capturar el archivo adjunto y mostrar la vista previa en pantalla
+            fileInput.addEventListener('change', (e) => {
+                const archivo = e.target.files[0];
+                if (archivo) {
+                    const lector = new FileReader();
+                    lector.onload = function(evento) {
+                        imagenBase64String = evento.target.result; // Foto convertida a texto puro exitosamente
+                        previewImg.src = imagenBase64String;
+                        previewImg.style.display = "block"; // Mostrar la miniatura en el formulario
+                    }
+                    lector.readAsDataURL(archivo);
+                }
+            });
+
+            // 2. Renderizar la tabla de control
             function actualizarTabla() {
                 tablaCuerpo.innerHTML = '';
                 productos.forEach((prod, index) => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
+                        <td><img src="${prod.imagen || 'https://via.placeholder.com/50'}" class="mini-preview" alt="Foto"></td>
                         <td><strong>${prod.nombre}</strong></td>
                         <td>${prod.categoria}</td>
                         <td>₡${prod.precio}</td>
@@ -415,6 +160,7 @@
                 });
             }
 
+            // 3. Procesar el formulario al enviar
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
@@ -424,17 +170,23 @@
                     categoria: document.getElementById('categoria').value,
                     precio: document.getElementById('precio').value,
                     stock: document.getElementById('stock').value,
-                    imagen: document.getElementById('imagen').value,
+                    imagen: imagenBase64String, // Guardamos la foto convertida
                     descripcion: document.getElementById('descripcion').value
                 };
 
                 productos.push(nuevoProd);
                 localStorage.setItem('productos_botiquin', JSON.stringify(productos));
+                
+                // Resetear interfaz
                 form.reset();
+                previewImg.style.display = "none";
+                imagenBase64String = "";
+                
                 actualizarTabla();
-                alert('¡Producto guardado! Ya se puede ver reflejado en la página de catálogo.');
+                alert('¡Producto publicado! Ya puedes revisar el catálogo.');
             });
 
+            // 4. Eliminar producto
             tablaCuerpo.addEventListener('click', (e) => {
                 if(e.target.classList.contains('delete-btn')) {
                     const index = e.target.getAttribute('data-index');
