@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmacia El Botiquín - Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --brand-orange: #ff7a00;
@@ -14,37 +13,31 @@
             --font-sans: 'Inter', sans-serif;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: var(--font-sans);
-            background-color: #fcfbfa;
-            color: var(--text-dark);
+            background: linear-gradient(135deg, #ff9100 0%, #ff5100 100%);
+            color: white;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* --- BARRA DE NAVEGACIÓN --- */
+        /* Barra de Navegación */
         .navbar {
             background-color: #ffffff;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            position: relative;
-            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .nav-logo img {
             height: 45px;
             width: auto;
-            display: block;
+            border-radius: 50%;
         }
 
         .nav-menu {
@@ -60,16 +53,10 @@
             transition: color 0.2s ease;
         }
 
-        .nav-link:hover { 
-            color: var(--brand-orange); 
-        }
+        .nav-link:hover { color: var(--brand-orange); }
 
-        /* --- SECCIÓN PRINCIPAL (ESTILO FACEBOOK) --- */
-        .hero-banner {
-            /* Usamos la imagen de la portada como fondo exacto */
-            background: url('608199843_1162481542711823_1638805636273324806_n.jpg') no-repeat center center;
-            background-size: cover;
-            position: relative;
+        /* Contenido Central */
+        .hero-container {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -79,69 +66,82 @@
             text-align: center;
         }
 
-        /* Capa oscura sutil para que el botón resalte más en pantallas móviles */
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.05);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
+        /* Convertimos el contenedor del logo en un círculo perfecto de la marca */
+        .logo-circle-wrapper {
+            width: 220px;
+            height: 220px;
+            background-color: white;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 30px;
-            max-width: 900px;
-            width: 100%;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 6px solid var(--brand-blue);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
         }
 
-        /* Logotipo oficial en el puro centro */
-        .center-logo-wrapper {
-            background-color: transparent;
-            padding: 10px;
-            display: inline-block;
-            margin-bottom: 120px; /* Espacio para que no tape las letras principales del diseño de fondo */
+        .logo-circle-wrapper:hover {
+            transform: scale(1.05);
         }
 
-        .center-logo {
-            max-width: 260px;
-            height: auto;
-            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.15));
+        .logo-circle-wrapper img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
         }
 
-        /* --- BOTÓN DE ENTRADA AL CATÁLOGO --- */
-        .cta-btn {
-            display: inline-block;
+        .main-headline {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .badge-subtitle {
             background-color: var(--brand-blue);
             color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 8px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(0,51,160,0.4);
+            margin-bottom: 45px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-button {
+            background-color: #ffffff;
+            color: var(--brand-blue);
             text-decoration: none;
             padding: 18px 45px;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 800;
             border-radius: 50px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 25px rgba(0, 51, 160, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 3px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-4px);
-            background-color: #ff7a00;
-            box-shadow: 0 12px 28px rgba(255, 122, 0, 0.5);
+        .cta-button:hover {
+            background-color: var(--brand-blue);
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,51,160,0.4);
         }
 
-        /* Ajustes adaptables para celulares */
         @media (max-width: 768px) {
-            .center-logo { max-width: 180px; }
-            .center-logo-wrapper { margin-bottom: 40px; }
-            .cta-btn { font-size: 1rem; padding: 14px 32px; }
-            .hero-banner { background-position: 65% center; } /* Mueve un poco el fondo para centrar las letras en pantallas verticales */
+            .main-headline { font-size: 2rem; }
+            .badge-subtitle { font-size: 1.1rem; }
+            .logo-circle-wrapper { width: 170px; height: 170px; }
         }
     </style>
 </head>
@@ -149,7 +149,7 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="farmacia.png" alt="Farmacia El Botiquín">
+            <img src="farmacia.png" alt="Logo">
         </div>
         <div class="nav-menu">
             <a href="index.html" class="nav-link">Inicio</a>
@@ -157,17 +157,332 @@
         </div>
     </nav>
 
-    <header class="hero-banner">
-        <div class="hero-content">
-            
-            <div class="center-logo-wrapper">
-                <img src="farmacia.png" alt="Logo Central" class="center-logo">
-            </div>
-
-            <a href="catalogo.html" class="cta-btn">Ingresar al Catálogo</a>
-            
+    <main class="hero-container">
+        <div class="logo-circle-wrapper">
+            <img src="farmacia.png" alt="Farmacia El Botiquín">
         </div>
-    </header>
 
+        <h1 class="main-headline">¡Unite a la Familia Botiquín!</h1>
+        <div class="badge-subtitle">Y empezá a ganar</div>
+
+        <a href="catalogo.html" class="cta-button">Ingresar al Catálogo</a>
+    </main>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia El Botiquín - Catálogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --brand-orange: #ff7a00;
+            --brand-blue: #0033a0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); padding-bottom: 80px; }
+
+        .navbar { background-color: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-logo img { height: 45px; border-radius: 50%; }
+        .nav-menu { display: flex; gap: 25px; }
+        .nav-link { text-decoration: none; color: var(--text-main); font-weight: 700; }
+
+        .catalog-header { text-align: center; padding: 40px 20px 10px; }
+        .catalog-header h2 { color: var(--brand-blue); font-size: 2rem; font-weight: 800; }
+
+        .categories-nav { display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap; padding: 0 15px; }
+        .tab-btn { background: var(--card-bg); border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; padding: 10px 22px; border-radius: 30px; transition: all 0.2s; }
+        .tab-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+
+        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+
+        .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: transform 0.2s; }
+        .product-card:hover { transform: translateY(-4px); }
+        .product-image-wrapper { width: 100%; height: 230px; padding: 15px; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; border-top: 1px solid #f1f5f9; }
+        .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+        .product-price { font-size: 1.3rem; font-weight: 800; color: var(--brand-orange); margin-bottom: 4px; }
+        .product-stock { font-size: 0.8rem; font-weight: 700; color: #16a34a; margin-bottom: 12px; }
+        .product-stock.out { color: #dc2626; }
+        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; }
+        
+        .order-btn { display: inline-block; width: 100%; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; transition: background 0.2s; }
+        .order-btn:hover { background-color: var(--brand-orange); }
+        .order-btn.disabled { background-color: #cbd5e1; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo"><img src="farmacia.png" alt="Logo"></div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
+        </div>
+    </nav>
+
+    <div class="catalog-header">
+        <h2>Nuestro Catálogo Digital</h2>
+    </div>
+
+    <nav class="categories-nav">
+        <button class="tab-btn active" data-category="todos">Todos los Productos</button>
+        <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
+        <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
+    </nav>
+
+    <main class="catalog-container">
+        <div id="grid-productos" class="products-grid"></div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('grid-productos');
+            const botonesFiltro = document.querySelectorAll('.tab-btn');
+            let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
+
+            function renderizar(lista) {
+                grid.innerHTML = '';
+                if(lista.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:40px;">No hay productos disponibles por el momento.</p>';
+                    return;
+                }
+
+                lista.forEach(prod => {
+                    const numeroTelefono = "50688888888"; 
+                    const tieneStock = parseInt(prod.stock) > 0;
+                    const stockMsg = tieneStock ? `Stock: ${prod.stock} unidades` : "Agotado";
+                    
+                    const mensaje = `¡Hola! Me interesa el producto: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
+                    const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
+
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image-wrapper">
+                            <img src="${prod.imagen || 'https://via.placeholder.com/300?text=Sin+Foto'}" class="product-image" alt="${prod.nombre}">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">${prod.nombre}</h3>
+                            <p class="product-price">₡${prod.precio}</p>
+                            <p class="product-stock ${tieneStock ? '' : 'out'}">${stockMsg}</p>
+                            <p class="product-desc">${prod.descripcion}</p>
+                            <a href="${url}" target="_blank" class="order-btn ${tieneStock ? '' : 'disabled'}">
+                                ${tieneStock ? 'Solicitar por WhatsApp' : 'Agotado'}
+                            </a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            renderizar(productos);
+
+            botonesFiltro.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    botonesFiltro.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const cat = e.target.getAttribute('data-category');
+                    if (cat === 'todos') renderizar(productos);
+                    else renderizar(productos.filter(p => p.categoria === cat));
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Administrativo Seguro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0033a0;
+            --brand-orange: #ff7a00;
+            --text-dark: #1e293b;
+            --font-sans: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background-color: #f1f5f9; color: var(--text-dark); padding: 40px 20px; display: none; } /* Oculto por defecto */
+        
+        .admin-container { max-width: 800px; margin: 0 auto; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--brand-blue); text-decoration: none; font-weight: 700; }
+        
+        .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .form-card h2 { margin-bottom: 25px; font-size: 1.6rem; color: var(--brand-blue); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        
+        .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.9rem; font-weight: 700; color: #475569; }
+        .form-control { padding: 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem; }
+        .form-control:focus { outline: none; border-color: var(--brand-blue); }
+        
+        .image-preview { max-width: 150px; height: auto; margin-top: 10px; border-radius: 8px; display: none; border: 1px solid #cbd5e1; }
+        
+        .submit-btn { background-color: var(--brand-orange); color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; width: 100%; transition: background 0.2s; }
+        .submit-btn:hover { background-color: #e06b00; }
+
+        .inventory-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .inventory-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .inventory-table th, .inventory-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .inventory-table th { background-color: #f8fafc; font-weight: 700; }
+        .mini-img { width: 45px; height: 45px; object-fit: contain; border-radius: 6px; }
+        .delete-btn { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <a href="index.html" class="back-link">← Salir al Inicio Público</a>
+        
+        <div class="form-card">
+            <h2>Módulo de Inventario - Agregar Producto</h2>
+            <form id="form-producto">
+                <div class="form-group">
+                    <label for="nombre">Nombre Comercial del Producto</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Ej: Panadol Niños Jarabe" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria" class="form-control" required>
+                        <option value="medicamentos">Medicamentos</option>
+                        <option value="cuidado-personal">Cuidado Personal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio Público (en colones, solo números)</label>
+                    <input type="text" id="precio" class="form-control" placeholder="Ej: 4200" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Cantidad en Stock (Existencias)</label>
+                    <input type="number" id="stock" class="form-control" placeholder="Ej: 12" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen-file">Adjuntar Foto del Producto</label>
+                    <input type="file" id="imagen-file" class="form-control" accept="image/*" required>
+                    <img id="preview-img" class="image-preview" alt="Preview">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción / Modo de uso</label>
+                    <textarea id="descripcion" class="form-control" rows="3" placeholder="Escribe detalles del artículo..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Publicar en Catálogo</button>
+            </form>
+        </div>
+
+        <div class="inventory-card">
+            <h3>Productos en Exhibición</h3>
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-cuerpo"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // --- CONTROL ACCESO POR CONTRASEÑA ---
+        const passwordEntrada = prompt("Módulo Protegido. Ingrese la contraseña de administrador:");
+        if (passwordEntrada !== "mggi2026") {
+            alert("Contraseña incorrecta. Acceso denegado.");
+            window.location.href = "index.html";
+        } else {
+            document.body.style.display = "block"; // Desbloquea la interfaz gráfica
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('form-producto');
+            const tablaCuerpo = document.getElementById('tabla-cuerpo');
+            const fileInput = document.getElementById('imagen-file');
+            const previewImg = document.getElementById('preview-img');
+            
+            let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
+            let imagenBase64 = "";
+
+            fileInput.addEventListener('change', (e) => {
+                const archivo = e.target.files[0];
+                if (archivo) {
+                    const lector = new FileReader();
+                    lector.onload = (evento) => {
+                        imagenBase64 = evento.target.result;
+                        previewImg.src = imagenBase64;
+                        previewImg.style.display = "block";
+                    }
+                    lector.readAsDataURL(archivo);
+                }
+            });
+
+            function actualizarTabla() {
+                tablaCuerpo.innerHTML = '';
+                productos.forEach((prod, index) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><img src="${prod.imagen || 'https://via.placeholder.com/50'}" class="mini-img"></td>
+                        <td><strong>${prod.nombre}</strong></td>
+                        <td>${prod.categoria}</td>
+                        <td>₡${prod.precio}</td>
+                        <td>${prod.stock} uds.</td>
+                        <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+                    `;
+                    tablaCuerpo.appendChild(tr);
+                });
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nuevo = {
+                    id: Date.now(),
+                    nombre: document.getElementById('nombre').value,
+                    categoria: document.getElementById('categoria').value,
+                    precio: document.getElementById('precio').value,
+                    stock: document.getElementById('stock').value,
+                    imagen: imagenBase64,
+                    descripcion: document.getElementById('descripcion').value
+                };
+                productos.push(nuevo);
+                localStorage.setItem('productos_botiquin', JSON.stringify(productos));
+                form.reset();
+                previewImg.style.display = "none";
+                imagenBase64 = "";
+                actualizarTabla();
+                alert('¡Producto publicado exitosamente!');
+            });
+
+            tablaCuerpo.addEventListener('click', (e) => {
+                if(e.target.classList.contains('delete-btn')) {
+                    const index = e.target.getAttribute('data-index');
+                    if(confirm('¿Quitar del catálogo?')) {
+                        productos.splice(index, 1);
+                        localStorage.setItem('productos_botiquin', JSON.stringify(productos));
+                        actualizarTabla();
+                    }
+                }
+            });
+
+            actualizarTabla();
+        });
+    </script>
 </body>
 </html>
