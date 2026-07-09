@@ -17,31 +17,35 @@
         
         body {
             font-family: var(--font-sans);
-            background: linear-gradient(135deg, #ff9100 0%, #ff5100 100%);
+            background-color: #ff7a00;
             color: white;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Barra de Navegación */
+        /* Barra de Navegación limpia */
         .navbar {
             background-color: #ffffff;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
         }
 
         .nav-logo img {
             height: 45px;
             width: auto;
-            border-radius: 50%;
+            display: block;
         }
 
         .nav-menu {
             display: flex;
+            align-items: center;
             gap: 25px;
         }
 
@@ -54,94 +58,69 @@
         }
 
         .nav-link:hover { color: var(--brand-orange); }
-
-        /* Contenido Central */
-        .hero-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            text-align: center;
+        
+        /* Botón de Administrador en el menú */
+        .nav-link.admin-nav {
+            background-color: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #64748b;
         }
-
-        /* Convertimos el contenedor del logo en un círculo perfecto de la marca */
-        .logo-circle-wrapper {
-            width: 220px;
-            height: 220px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 6px solid var(--brand-blue);
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-circle-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-circle-wrapper img {
-            width: 90%;
-            height: 90%;
-            object-fit: contain;
-        }
-
-        .main-headline {
-            font-size: 3rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .badge-subtitle {
+        .nav-link.admin-nav:hover {
             background-color: var(--brand-blue);
             color: white;
-            font-size: 1.4rem;
-            font-weight: 700;
-            padding: 8px 25px;
-            border-radius: 8px;
-            display: inline-block;
-            text-transform: uppercase;
-            box-shadow: 0 6px 20px rgba(0,51,160,0.4);
-            margin-bottom: 45px;
-            border: 2px solid rgba(255,255,255,0.2);
         }
 
+        /* El Banner de Facebook ocupando todo el fondo de pantalla */
+        .hero-banner {
+            background: url('608199843_1162481542711823_1638805636273324806_n.jpg') no-repeat center center;
+            background-size: cover;
+            flex-grow: 1;
+            display: flex;
+            align-items: flex-end; /* Coloca el botón en la parte baja para no tapar el diseño central */
+            justify-content: center;
+            padding-bottom: 60px;
+            position: relative;
+        }
+
+        /* Botón de Entrada */
         .cta-button {
             background-color: #ffffff;
             color: var(--brand-blue);
             text-decoration: none;
-            padding: 18px 45px;
-            font-size: 1.15rem;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             font-weight: 800;
             border-radius: 50px;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid var(--brand-blue);
+            position: relative;
+            z-index: 5;
         }
 
         .cta-button:hover {
             background-color: var(--brand-blue);
             color: white;
             border-color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,51,160,0.4);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 51, 160, 0.4);
         }
 
         @media (max-width: 768px) {
-            .main-headline { font-size: 2rem; }
-            .badge-subtitle { font-size: 1.1rem; }
-            .logo-circle-wrapper { width: 170px; height: 170px; }
+            .hero-banner {
+                background-size: contain;
+                background-position: center 20%;
+                background-color: #ff7a00;
+                padding-bottom: 40px;
+            }
+            .cta-button {
+                font-size: 1rem;
+                padding: 14px 35px;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -149,24 +128,18 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="farmacia.png" alt="Logo">
+            <img src="farmacia.png" alt="Farmacia El Botiquín">
         </div>
         <div class="nav-menu">
             <a href="index.html" class="nav-link">Inicio</a>
             <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
+            <a href="admin.html" class="nav-link admin-nav">Admin</a>
         </div>
     </nav>
 
-    <main class="hero-container">
-        <div class="logo-circle-wrapper">
-            <img src="farmacia.png" alt="Farmacia El Botiquín">
-        </div>
-
-        <h1 class="main-headline">¡Unite a la Familia Botiquín!</h1>
-        <div class="badge-subtitle">Y empezá a ganar</div>
-
+    <header class="hero-banner">
         <a href="catalogo.html" class="cta-button">Ingresar al Catálogo</a>
-    </main>
+    </header>
 
 </body>
 </html>
@@ -175,8 +148,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia El Botiquín - Catálogo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Catálogo - Farmacia El Botiquín</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f8fafc;
@@ -184,41 +157,39 @@
             --brand-blue: #0033a0;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --card-bg: #ffffff;
             --font-sans: 'Inter', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); padding-bottom: 80px; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); padding-bottom: 60px; }
 
         .navbar { background-color: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-logo img { height: 45px; border-radius: 50%; }
+        .nav-logo img { height: 45px; }
         .nav-menu { display: flex; gap: 25px; }
         .nav-link { text-decoration: none; color: var(--text-main); font-weight: 700; }
 
         .catalog-header { text-align: center; padding: 40px 20px 10px; }
-        .catalog-header h2 { color: var(--brand-blue); font-size: 2rem; font-weight: 800; }
+        .catalog-header h2 { color: var(--brand-blue); font-size: 2rem; font-weight: 800; text-transform: uppercase; }
 
-        .categories-nav { display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap; padding: 0 15px; }
-        .tab-btn { background: var(--card-bg); border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; padding: 10px 22px; border-radius: 30px; transition: all 0.2s; }
+        .categories-nav { display: flex; justify-content: center; gap: 12px; margin: 25px 0; flex-wrap: wrap; }
+        .tab-btn { background: white; border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; padding: 10px 22px; border-radius: 30px; transition: all 0.2s; }
         .tab-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
 
         .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
 
-        .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: transform 0.2s; }
-        .product-card:hover { transform: translateY(-4px); }
-        .product-image-wrapper { width: 100%; height: 230px; padding: 15px; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .product-image-wrapper { width: 100%; height: 220px; padding: 15px; display: flex; align-items: center; justify-content: center; background: #fff; }
         .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
         
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; border-top: 1px solid #f1f5f9; }
-        .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
-        .product-price { font-size: 1.3rem; font-weight: 800; color: var(--brand-orange); margin-bottom: 4px; }
+        .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+        .product-price { font-size: 1.35rem; font-weight: 800; color: var(--brand-orange); margin-bottom: 4px; }
         .product-stock { font-size: 0.8rem; font-weight: 700; color: #16a34a; margin-bottom: 12px; }
         .product-stock.out { color: #dc2626; }
-        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; }
+        .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; line-height: 1.4; }
         
-        .order-btn { display: inline-block; width: 100%; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; transition: background 0.2s; }
+        .order-btn { display: block; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; transition: background 0.2s; }
         .order-btn:hover { background-color: var(--brand-orange); }
         .order-btn.disabled { background-color: #cbd5e1; pointer-events: none; }
     </style>
@@ -234,11 +205,11 @@
     </nav>
 
     <div class="catalog-header">
-        <h2>Nuestro Catálogo Digital</h2>
+        <h2>Catálogo de Productos</h2>
     </div>
 
     <nav class="categories-nav">
-        <button class="tab-btn active" data-category="todos">Todos los Productos</button>
+        <button class="tab-btn active" data-category="todos">Todos</button>
         <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
         <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
     </nav>
@@ -256,16 +227,16 @@
             function renderizar(lista) {
                 grid.innerHTML = '';
                 if(lista.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:40px;">No hay productos disponibles por el momento.</p>';
+                    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:40px;">No hay productos publicados todavía.</p>';
                     return;
                 }
 
                 lista.forEach(prod => {
-                    const numeroTelefono = "50688888888"; 
+                    const numeroTelefono = "50688888888"; // Configura tu número de WhatsApp aquí
                     const tieneStock = parseInt(prod.stock) > 0;
-                    const stockMsg = tieneStock ? `Stock: ${prod.stock} unidades` : "Agotado";
+                    const stockMsg = tieneStock ? `Disponibles: ${prod.stock} uds.` : "Producto Agotado";
                     
-                    const mensaje = `¡Hola! Me interesa el producto: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
+                    const mensaje = `¡Hola Farmacia El Botiquín! Me interesa consultar por: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
                     const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
 
                     const card = document.createElement('div');
@@ -280,7 +251,7 @@
                             <p class="product-stock ${tieneStock ? '' : 'out'}">${stockMsg}</p>
                             <p class="product-desc">${prod.descripcion}</p>
                             <a href="${url}" target="_blank" class="order-btn ${tieneStock ? '' : 'disabled'}">
-                                ${tieneStock ? 'Solicitar por WhatsApp' : 'Agotado'}
+                                ${tieneStock ? 'Pedir por WhatsApp' : 'Agotado'}
                             </a>
                         </div>
                     `;
@@ -308,7 +279,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo Administrativo Seguro</title>
+    <title>Módulo Administrativo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -318,7 +289,9 @@
             --font-sans: 'Inter', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-sans); background-color: #f1f5f9; color: var(--text-dark); padding: 40px 20px; display: none; } /* Oculto por defecto */
+        
+        /* Ocultamos la pantalla por completo hasta comprobar la clave */
+        body { font-family: var(--font-sans); background-color: #f1f5f9; color: var(--text-dark); padding: 40px 20px; display: none; }
         
         .admin-container { max-width: 800px; margin: 0 auto; }
         .back-link { display: inline-block; margin-bottom: 20px; color: var(--brand-blue); text-decoration: none; font-weight: 700; }
@@ -331,7 +304,7 @@
         .form-control { padding: 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem; }
         .form-control:focus { outline: none; border-color: var(--brand-blue); }
         
-        .image-preview { max-width: 150px; height: auto; margin-top: 10px; border-radius: 8px; display: none; border: 1px solid #cbd5e1; }
+        .image-preview { max-width: 140px; height: auto; margin-top: 10px; border-radius: 8px; display: none; border: 1px solid #cbd5e1; }
         
         .submit-btn { background-color: var(--brand-orange); color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; width: 100%; transition: background 0.2s; }
         .submit-btn:hover { background-color: #e06b00; }
@@ -346,15 +319,26 @@
 </head>
 <body>
 
+    <script>
+        // Verificación de seguridad inmediata antes de procesar el HTML
+        const passwordInput = prompt("Módulo Protegido de Farmacia El Botiquín.\nIngrese la clave de administrador:");
+        if (passwordInput !== "mggi2026") {
+            alert("Clave incorrecta. Redireccionando al inicio público...");
+            window.location.href = "index.html";
+        } else {
+            document.body.style.display = "block"; // Se muestra la interfaz solo si la clave es correcta
+        }
+    </script>
+
     <div class="admin-container">
-        <a href="index.html" class="back-link">← Salir al Inicio Público</a>
+        <a href="index.html" class="back-link">← Volver al Inicio Público</a>
         
         <div class="form-card">
-            <h2>Módulo de Inventario - Agregar Producto</h2>
+            <h2>Módulo de Carga de Productos</h2>
             <form id="form-producto">
                 <div class="form-group">
-                    <label for="nombre">Nombre Comercial del Producto</label>
-                    <input type="text" id="nombre" class="form-control" placeholder="Ej: Panadol Niños Jarabe" required>
+                    <label for="nombre">Nombre del Producto</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Ej: Acetaminofén 500mg" required>
                 </div>
                 <div class="form-group">
                     <label for="categoria">Categoría</label>
@@ -364,28 +348,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="precio">Precio Público (en colones, solo números)</label>
-                    <input type="text" id="precio" class="form-control" placeholder="Ej: 4200" required>
+                    <label for="precio">Precio Público (en Colones)</label>
+                    <input type="text" id="precio" class="form-control" placeholder="Ej: 2500" required>
                 </div>
                 <div class="form-group">
                     <label for="stock">Cantidad en Stock (Existencias)</label>
-                    <input type="number" id="stock" class="form-control" placeholder="Ej: 12" min="0" required>
+                    <input type="number" id="stock" class="form-control" placeholder="Ej: 50" min="0" required>
                 </div>
                 <div class="form-group">
-                    <label for="imagen-file">Adjuntar Foto del Producto</label>
+                    <label for="imagen-file">Adjuntar Imagen del Dispositivo (Attach file)</label>
                     <input type="file" id="imagen-file" class="form-control" accept="image/*" required>
-                    <img id="preview-img" class="image-preview" alt="Preview">
+                    <img id="preview-img" class="image-preview" alt="Vista previa">
                 </div>
                 <div class="form-group">
-                    <label for="descripcion">Descripción / Modo de uso</label>
-                    <textarea id="descripcion" class="form-control" rows="3" placeholder="Escribe detalles del artículo..." required></textarea>
+                    <label for="descripcion">Descripción del Producto</label>
+                    <textarea id="descripcion" class="form-control" rows="3" placeholder="Uso, miligramos, indicaciones generales..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Publicar en Catálogo</button>
+                <button type="submit" class="submit-btn">Publicar en Catálogo Público</button>
             </form>
         </div>
 
         <div class="inventory-card">
-            <h3>Productos en Exhibición</h3>
+            <h3>Productos Publicados Activos</h3>
             <table class="inventory-table">
                 <thead>
                     <tr>
@@ -403,15 +387,6 @@
     </div>
 
     <script>
-        // --- CONTROL ACCESO POR CONTRASEÑA ---
-        const passwordEntrada = prompt("Módulo Protegido. Ingrese la contraseña de administrador:");
-        if (passwordEntrada !== "mggi2026") {
-            alert("Contraseña incorrecta. Acceso denegado.");
-            window.location.href = "index.html";
-        } else {
-            document.body.style.display = "block"; // Desbloquea la interfaz gráfica
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('form-producto');
             const tablaCuerpo = document.getElementById('tabla-cuerpo');
@@ -467,13 +442,13 @@
                 previewImg.style.display = "none";
                 imagenBase64 = "";
                 actualizarTabla();
-                alert('¡Producto publicado exitosamente!');
+                alert('¡Producto agregado al catálogo público!');
             });
 
             tablaCuerpo.addEventListener('click', (e) => {
                 if(e.target.classList.contains('delete-btn')) {
                     const index = e.target.getAttribute('data-index');
-                    if(confirm('¿Quitar del catálogo?')) {
+                    if(confirm('¿Deseas eliminar este producto del catálogo?')) {
                         productos.splice(index, 1);
                         localStorage.setItem('productos_botiquin', JSON.stringify(productos));
                         actualizarTabla();
