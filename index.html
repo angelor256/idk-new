@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacia El Botiquín - Inicio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Farmacia El Botiquín</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-orange: #ff7a00;
             --brand-blue: #0033a0;
             --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
             --font-sans: 'Inter', sans-serif;
         }
 
@@ -17,24 +19,23 @@
         
         body {
             font-family: var(--font-sans);
-            background-color: #ff7a00;
-            color: white;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Barra de Navegación limpia */
+        /* --- MENÚ DE NAVEGACIÓN --- */
         .navbar {
             background-color: #ffffff;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             position: relative;
-            z-index: 10;
+            z-index: 100;
         }
 
         .nav-logo img {
@@ -46,45 +47,51 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 700;
-            font-size: 1rem;
-            transition: color 0.2s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        .nav-link:hover { color: var(--brand-orange); }
+        .nav-link:hover, .nav-link.active { color: var(--brand-orange); }
         
-        /* Botón de Administrador en el menú */
-        .nav-link.admin-nav {
+        .nav-link.admin-btn {
             background-color: #f1f5f9;
             padding: 6px 14px;
             border-radius: 6px;
-            font-size: 0.85rem;
-            color: #64748b;
+            color: #475569;
         }
-        .nav-link.admin-nav:hover {
+        .nav-link.admin-btn:hover {
             background-color: var(--brand-blue);
             color: white;
         }
 
-        /* El Banner de Facebook ocupando todo el fondo de pantalla */
-        .hero-banner {
-            background: url('608199843_1162481542711823_1638805636273324806_n.jpg') no-repeat center center;
-            background-size: cover;
+        /* --- SISTEMA DE PESTAÑAS (VISTAS) --- */
+        .view-section {
+            display: none; /* Ocultas por defecto */
             flex-grow: 1;
-            display: flex;
-            align-items: flex-end; /* Coloca el botón en la parte baja para no tapar el diseño central */
-            justify-content: center;
-            padding-bottom: 60px;
-            position: relative;
+        }
+        
+        .view-section.active-view {
+            display: flex; /* Solo la sección activa se muestra */
+            flex-direction: column;
         }
 
-        /* Botón de Entrada */
+        /* --- 1. VISTA DE INICIO (PORTADA FACEBOOK) --- */
+        #vista-inicio {
+            background: url('608199843_1162481542711823_1638805636273324806_n.jpg') no-repeat center center;
+            background-size: cover;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 70px;
+        }
+
         .cta-button {
             background-color: #ffffff;
             color: var(--brand-blue);
@@ -95,90 +102,30 @@
             border-radius: 50px;
             text-transform: uppercase;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 3px solid var(--brand-blue);
-            position: relative;
-            z-index: 5;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .cta-button:hover {
             background-color: var(--brand-blue);
             color: white;
             border-color: white;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 51, 160, 0.4);
+            transform: translateY(-3px);
         }
 
-        @media (max-width: 768px) {
-            .hero-banner {
-                background-size: contain;
-                background-position: center 20%;
-                background-color: #ff7a00;
-                padding-bottom: 40px;
-            }
-            .cta-button {
-                font-size: 1rem;
-                padding: 14px 35px;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="nav-logo">
-            <img src="farmacia.png" alt="Farmacia El Botiquín">
-        </div>
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
-            <a href="admin.html" class="nav-link admin-nav">Admin</a>
-        </div>
-    </nav>
-
-    <header class="hero-banner">
-        <a href="catalogo.html" class="cta-button">Ingresar al Catálogo</a>
-    </header>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Farmacia El Botiquín</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --brand-orange: #ff7a00;
-            --brand-blue: #0033a0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --font-sans: 'Inter', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); padding-bottom: 60px; }
-
-        .navbar { background-color: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-logo img { height: 45px; }
-        .nav-menu { display: flex; gap: 25px; }
-        .nav-link { text-decoration: none; color: var(--text-main); font-weight: 700; }
-
+        /* --- 2. VISTA DE CATÁLOGO PÚBLICO --- */
         .catalog-header { text-align: center; padding: 40px 20px 10px; }
         .catalog-header h2 { color: var(--brand-blue); font-size: 2rem; font-weight: 800; text-transform: uppercase; }
 
         .categories-nav { display: flex; justify-content: center; gap: 12px; margin: 25px 0; flex-wrap: wrap; }
-        .tab-btn { background: white; border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; padding: 10px 22px; border-radius: 30px; transition: all 0.2s; }
+        .tab-btn { background: white; border: 1.5px solid #e2e8f0; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; padding: 10px 22px; border-radius: 30px; }
         .tab-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
 
-        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding-bottom: 60px; }
 
-        .product-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
         .product-image-wrapper { width: 100%; height: 220px; padding: 15px; display: flex; align-items: center; justify-content: center; background: #fff; }
         .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
         
@@ -189,274 +136,269 @@
         .product-stock.out { color: #dc2626; }
         .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; flex-grow: 1; line-height: 1.4; }
         
-        .order-btn { display: block; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; transition: background 0.2s; }
-        .order-btn:hover { background-color: var(--brand-orange); }
+        .order-btn { display: block; text-align: center; background-color: var(--brand-blue); color: white; text-decoration: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; }
         .order-btn.disabled { background-color: #cbd5e1; pointer-events: none; }
-    </style>
-</head>
-<body>
 
-    <nav class="navbar">
-        <div class="nav-logo"><img src="farmacia.png" alt="Logo"></div>
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="catalogo.html" class="nav-link">Ver Catálogo</a>
-        </div>
-    </nav>
-
-    <div class="catalog-header">
-        <h2>Catálogo de Productos</h2>
-    </div>
-
-    <nav class="categories-nav">
-        <button class="tab-btn active" data-category="todos">Todos</button>
-        <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
-        <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
-    </nav>
-
-    <main class="catalog-container">
-        <div id="grid-productos" class="products-grid"></div>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('grid-productos');
-            const botonesFiltro = document.querySelectorAll('.tab-btn');
-            let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
-
-            function renderizar(lista) {
-                grid.innerHTML = '';
-                if(lista.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:40px;">No hay productos publicados todavía.</p>';
-                    return;
-                }
-
-                lista.forEach(prod => {
-                    const numeroTelefono = "50688888888"; // Configura tu número de WhatsApp aquí
-                    const tieneStock = parseInt(prod.stock) > 0;
-                    const stockMsg = tieneStock ? `Disponibles: ${prod.stock} uds.` : "Producto Agotado";
-                    
-                    const mensaje = `¡Hola Farmacia El Botiquín! Me interesa consultar por: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
-                    const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
-
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <div class="product-image-wrapper">
-                            <img src="${prod.imagen || 'https://via.placeholder.com/300?text=Sin+Foto'}" class="product-image" alt="${prod.nombre}">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">${prod.nombre}</h3>
-                            <p class="product-price">₡${prod.precio}</p>
-                            <p class="product-stock ${tieneStock ? '' : 'out'}">${stockMsg}</p>
-                            <p class="product-desc">${prod.descripcion}</p>
-                            <a href="${url}" target="_blank" class="order-btn ${tieneStock ? '' : 'disabled'}">
-                                ${tieneStock ? 'Pedir por WhatsApp' : 'Agotado'}
-                            </a>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-
-            renderizar(productos);
-
-            botonesFiltro.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    botonesFiltro.forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    const cat = e.target.getAttribute('data-category');
-                    if (cat === 'todos') renderizar(productos);
-                    else renderizar(productos.filter(p => p.categoria === cat));
-                });
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo Administrativo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-blue: #0033a0;
-            --brand-orange: #ff7a00;
-            --text-dark: #1e293b;
-            --font-sans: 'Inter', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* Ocultamos la pantalla por completo hasta comprobar la clave */
-        body { font-family: var(--font-sans); background-color: #f1f5f9; color: var(--text-dark); padding: 40px 20px; display: none; }
-        
-        .admin-container { max-width: 800px; margin: 0 auto; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--brand-blue); text-decoration: none; font-weight: 700; }
-        
+        /* --- 3. VISTA DE ADMINISTRACIÓN --- */
+        .admin-wrapper { max-width: 800px; margin: 40px auto; width: 100%; padding: 0 20px; }
         .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 40px; }
         .form-card h2 { margin-bottom: 25px; font-size: 1.6rem; color: var(--brand-blue); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         
         .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-size: 0.9rem; font-weight: 700; color: #475569; }
         .form-control { padding: 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem; }
-        .form-control:focus { outline: none; border-color: var(--brand-blue); }
         
         .image-preview { max-width: 140px; height: auto; margin-top: 10px; border-radius: 8px; display: none; border: 1px solid #cbd5e1; }
-        
-        .submit-btn { background-color: var(--brand-orange); color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; width: 100%; transition: background 0.2s; }
-        .submit-btn:hover { background-color: #e06b00; }
+        .submit-btn { background-color: var(--brand-orange); color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 700; border-radius: 8px; cursor: pointer; text-transform: uppercase; width: 100%; }
 
         .inventory-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .inventory-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .inventory-table th, .inventory-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
         .inventory-table th { background-color: #f8fafc; font-weight: 700; }
         .mini-img { width: 45px; height: 45px; object-fit: contain; border-radius: 6px; }
-        .delete-btn { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .delete-btn { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            #vista-inicio { background-size: contain; background-position: center 20%; background-color: #ff7a00; padding-bottom: 40px; }
+            .cta-button { font-size: 1rem; padding: 14px 35px; }
+        }
     </style>
 </head>
 <body>
 
-    <script>
-        // Verificación de seguridad inmediata antes de procesar el HTML
-        const passwordInput = prompt("Módulo Protegido de Farmacia El Botiquín.\nIngrese la clave de administrador:");
-        if (passwordInput !== "mggi2026") {
-            alert("Clave incorrecta. Redireccionando al inicio público...");
-            window.location.href = "index.html";
-        } else {
-            document.body.style.display = "block"; // Se muestra la interfaz solo si la clave es correcta
-        }
-    </script>
-
-    <div class="admin-container">
-        <a href="index.html" class="back-link">← Volver al Inicio Público</a>
-        
-        <div class="form-card">
-            <h2>Módulo de Carga de Productos</h2>
-            <form id="form-producto">
-                <div class="form-group">
-                    <label for="nombre">Nombre del Producto</label>
-                    <input type="text" id="nombre" class="form-control" placeholder="Ej: Acetaminofén 500mg" required>
-                </div>
-                <div class="form-group">
-                    <label for="categoria">Categoría</label>
-                    <select id="categoria" class="form-control" required>
-                        <option value="medicamentos">Medicamentos</option>
-                        <option value="cuidado-personal">Cuidado Personal</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="precio">Precio Público (en Colones)</label>
-                    <input type="text" id="precio" class="form-control" placeholder="Ej: 2500" required>
-                </div>
-                <div class="form-group">
-                    <label for="stock">Cantidad en Stock (Existencias)</label>
-                    <input type="number" id="stock" class="form-control" placeholder="Ej: 50" min="0" required>
-                </div>
-                <div class="form-group">
-                    <label for="imagen-file">Adjuntar Imagen del Dispositivo (Attach file)</label>
-                    <input type="file" id="imagen-file" class="form-control" accept="image/*" required>
-                    <img id="preview-img" class="image-preview" alt="Vista previa">
-                </div>
-                <div class="form-group">
-                    <label for="descripcion">Descripción del Producto</label>
-                    <textarea id="descripcion" class="form-control" rows="3" placeholder="Uso, miligramos, indicaciones generales..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Publicar en Catálogo Público</button>
-            </form>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="farmacia.png" alt="Farmacia El Botiquín">
         </div>
-
-        <div class="inventory-card">
-            <h3>Productos Publicados Activos</h3>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Producto</th>
-                        <th>Categoría</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-cuerpo"></tbody>
-            </table>
+        <div class="nav-menu">
+            <span class="nav-link active" onclick="cambiarVista('inicio')">Inicio</span>
+            <span class="nav-link" onclick="cambiarVista('catalogo')">Ver Catálogo</span>
+            <span class="nav-link admin-btn" onclick="entrarComoAdmin()">Admin</span>
         </div>
-    </div>
+    </nav>
+
+    <section id="vista-inicio" class="view-section active-view">
+        <button class="cta-button" onclick="cambiarVista('catalogo')">Ingresar al Catálogo</button>
+    </section>
+
+    <section id="vista-catalogo" class="view-section">
+        <div class="catalog-header">
+            <h2>Catálogo de Productos</h2>
+        </div>
+        <nav class="categories-nav">
+            <button class="tab-btn active" data-category="todos">Todos</button>
+            <button class="tab-btn" data-category="medicamentos">Medicamentos</button>
+            <button class="tab-btn" data-category="cuidado-personal">Cuidado Personal</button>
+        </nav>
+        <main class="catalog-container">
+            <div id="grid-productos" class="products-grid"></div>
+        </main>
+    </section>
+
+    <section id="vista-admin" class="view-section">
+        <div class="admin-wrapper">
+            <div class="form-card">
+                <h2>Módulo de Carga de Productos</h2>
+                <form id="form-producto">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Producto</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Ej: Acetaminofén 500mg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoría</label>
+                        <select id="categoria" class="form-control" required>
+                            <option value="medicamentos">Medicamentos</option>
+                            <option value="cuidado-personal">Cuidado Personal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio Público (en Colones)</label>
+                        <input type="text" id="precio" class="form-control" placeholder="Ej: 2500" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Cantidad en Stock (Existencias)</label>
+                        <input type="number" id="stock" class="form-control" placeholder="Ej: 50" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagen-file">Adjuntar Imagen del Dispositivo (Attach file)</label>
+                        <input type="file" id="imagen-file" class="form-control" accept="image/*" required>
+                        <img id="preview-img" class="image-preview" alt="Vista previa">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción del Producto</label>
+                        <textarea id="descripcion" class="form-control" rows="3" placeholder="Uso, indicaciones generales..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Publicar en Catálogo Público</button>
+                </form>
+            </div>
+
+            <div class="inventory-card">
+                <h3>Productos Publicados Activos</h3>
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-cuerpo"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('form-producto');
-            const tablaCuerpo = document.getElementById('tabla-cuerpo');
-            const fileInput = document.getElementById('imagen-file');
-            const previewImg = document.getElementById('preview-img');
-            
-            let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
-            let imagenBase64 = "";
+        let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
+        let imagenBase64String = "";
 
-            fileInput.addEventListener('change', (e) => {
-                const archivo = e.target.files[0];
-                if (archivo) {
-                    const lector = new FileReader();
-                    lector.onload = (evento) => {
-                        imagenBase64 = evento.target.result;
-                        previewImg.src = imagenBase64;
-                        previewImg.style.display = "block";
-                    }
-                    lector.readAsDataURL(archivo);
-                }
+        // Cambiar entre pantallas de forma fluida sin recargar
+        function cambiarVista(nombreVista) {
+            document.querySelectorAll('.view-section').forEach(seccion => {
+                seccion.classList.remove('active-view');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
             });
 
-            function actualizarTabla() {
-                tablaCuerpo.innerHTML = '';
-                productos.forEach((prod, index) => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td><img src="${prod.imagen || 'https://via.placeholder.com/50'}" class="mini-img"></td>
-                        <td><strong>${prod.nombre}</strong></td>
-                        <td>${prod.categoria}</td>
-                        <td>₡${prod.precio}</td>
-                        <td>${prod.stock} uds.</td>
-                        <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
-                    `;
-                    tablaCuerpo.appendChild(tr);
-                });
+            document.getElementById(`vista-${nombreVista}`).classList.add('active-view');
+            
+            if(nombreVista === 'catalogo') {
+                renderizarCatalogo(productos);
+            }
+        }
+
+        // CONTROL DE ACCESO RESTINGIDO: La clave solo salta aquí
+        function entrarComoAdmin() {
+            const intentoClave = prompt("Módulo Protegido de Farmacia El Botiquín.\nIngrese la clave de administrador:");
+            if (intentoClave === "mggi2026") {
+                cambiarVista('admin');
+                actualizarTablaAdmin();
+            } else {
+                alert("Clave incorrecta. Acceso denegado.");
+            }
+        }
+
+        // Renderizado del Catálogo Comercial Público
+        function renderizarCatalogo(lista) {
+            const grid = document.getElementById('grid-productos');
+            grid.innerHTML = '';
+            
+            if(lista.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:40px;">No hay productos publicados todavía.</p>';
+                return;
             }
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const nuevo = {
-                    id: Date.now(),
-                    nombre: document.getElementById('nombre').value,
-                    categoria: document.getElementById('categoria').value,
-                    precio: document.getElementById('precio').value,
-                    stock: document.getElementById('stock').value,
-                    imagen: imagenBase64,
-                    descripcion: document.getElementById('descripcion').value
-                };
-                productos.push(nuevo);
-                localStorage.setItem('productos_botiquin', JSON.stringify(productos));
-                form.reset();
-                previewImg.style.display = "none";
-                imagenBase64 = "";
-                actualizarTabla();
-                alert('¡Producto agregado al catálogo público!');
-            });
+            lista.forEach(prod => {
+                const numeroTelefono = "50688888888"; // Modifica por tu WhatsApp real
+                const tieneStock = parseInt(prod.stock) > 0;
+                const stockMsg = tieneStock ? `Disponibles: ${prod.stock} uds.` : "Producto Agotado";
+                
+                const mensaje = `¡Hola Farmacia El Botiquín! Me interesa consultar por: *${prod.nombre}* (Precio: ₡${prod.precio}).`;
+                const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
 
-            tablaCuerpo.addEventListener('click', (e) => {
-                if(e.target.classList.contains('delete-btn')) {
-                    const index = e.target.getAttribute('data-index');
-                    if(confirm('¿Deseas eliminar este producto del catálogo?')) {
-                        productos.splice(index, 1);
-                        localStorage.setItem('productos_botiquin', JSON.stringify(productos));
-                        actualizarTabla();
-                    }
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-wrapper">
+                        <img src="${prod.imagen || 'https://via.placeholder.com/300?text=Sin+Foto'}" class="product-image" alt="${prod.nombre}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${prod.nombre}</h3>
+                        <p class="product-price">₡${prod.precio}</p>
+                        <p class="product-stock ${tieneStock ? '' : 'out'}">${stockMsg}</p>
+                        <p class="product-desc">${prod.descripcion}</p>
+                        <a href="${url}" target="_blank" class="order-btn ${tieneStock ? '' : 'disabled'}">
+                            ${tieneStock ? 'Pedir por WhatsApp' : 'Agotado'}
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Lógica de carga de archivos (FileReader)
+        const fileInput = document.getElementById('imagen-file');
+        const previewImg = document.getElementById('preview-img');
+        
+        fileInput.addEventListener('change', (e) => {
+            const archivo = e.target.files[0];
+            if (archivo) {
+                const lector = new FileReader();
+                lector.onload = (evento) => {
+                    imagenBase64String = evento.target.result;
+                    previewImg.src = imagenBase64String;
+                    previewImg.style.display = "block";
                 }
-            });
+                lector.readAsDataURL(archivo);
+            }
+        });
 
-            actualizarTabla();
+        // Tabla de inventario del administrador
+        function actualizarTablaAdmin() {
+            const tablaCuerpo = document.getElementById('tabla-cuerpo');
+            tablaCuerpo.innerHTML = '';
+            productos.forEach((prod, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><img src="${prod.imagen || 'https://via.placeholder.com/50'}" class="mini-img"></td>
+                    <td><strong>${prod.nombre}</strong></td>
+                    <td>${prod.categoria}</td>
+                    <td>₡${prod.precio}</td>
+                    <td>${prod.stock} uds.</td>
+                    <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+                `;
+                tablaCuerpo.appendChild(tr);
+            });
+        }
+
+        // Enviar formulario de nuevo producto
+        document.getElementById('form-producto').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nuevo = {
+                id: Date.now(),
+                nombre: document.getElementById('nombre').value,
+                categoria: document.getElementById('categoria').value,
+                precio: document.getElementById('precio').value,
+                stock: document.getElementById('stock').value,
+                imagen: imagenBase64String,
+                descripcion: document.getElementById('descripcion').value
+            };
+            productos.push(nuevo);
+            localStorage.setItem('productos_botiquin', JSON.stringify(productos));
+            
+            document.getElementById('form-producto').reset();
+            previewImg.style.display = "none";
+            imagenBase64String = "";
+            
+            actualizarTablaAdmin();
+            alert('¡Producto agregado al catálogo!');
+        });
+
+        // Eliminar productos
+        document.getElementById('tabla-cuerpo').addEventListener('click', (e) => {
+            if(e.target.classList.contains('delete-btn')) {
+                const index = e.target.getAttribute('data-index');
+                if(confirm('¿Deseas eliminar este producto del catálogo público?')) {
+                    productos.splice(index, 1);
+                    localStorage.setItem('productos_botiquin', JSON.stringify(productos));
+                    actualizarTablaAdmin();
+                }
+            }
+        });
+
+        // Filtros de categorías comerciales
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                const cat = e.target.getAttribute('data-category');
+                if (cat === 'todos') renderizarCatalogo(productos);
+                else renderizarCatalogo(productos.filter(p => p.categoria === cat));
+            });
         });
     </script>
 </body>
