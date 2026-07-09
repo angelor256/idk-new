@@ -1,0 +1,278 @@
+[
+  {
+    "id": 1,
+    "nombre": "Producto Ejemplo Premium",
+    "categoria": "novedades",
+    "precio": "15,500",
+    "descripcion": "Descripción corta y elegante del producto destacando sus materiales o beneficios.",
+    "imagen": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+  },
+  {
+    "id": 2,
+    "nombre": "Artículo Esencial Minimalista",
+    "categoria": "regulares",
+    "precio": "22,000",
+    "descripcion": "Un diseño pensado para el día a día con acabados de alta calidad.",
+    "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+  }
+]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Digital Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="brand-container">
+            <h1 class="brand-title">Nombre del Negocio</h1>
+            <p class="brand-subtitle">Catálogo Exclusivo & Pedidos Directos</p>
+        </div>
+    </header>
+
+    <nav class="categories-nav">
+        <button class="tab-btn active" data-category="todos">Todos</button>
+        <button class="tab-btn" data-category="novedades">Novedades</button>
+        <button class="tab-btn" data-category="regulares">Colección</button>
+    </nav>
+
+    <main class="catalog-container">
+        <div id="grid-productos" class="products-grid">
+            </div>
+    </main>
+
+    <a href="https://wa.me/TU_NUMERO" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" class="icon-ws"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.528 1.975 14.061.951 11.453.951c-5.438 0-9.863 4.372-9.867 9.802-.001 1.836.52 3.631 1.508 5.216l-1.005 3.675 3.774-.973zm13.111-5.696c-.302-.15-1.787-.872-2.063-.972-.276-.1-.477-.15-.677.15-.199.298-.775.971-.951 1.171-.175.199-.35.224-.651.074-1.203-.591-2.103-.97-2.946-2.396-.222-.376.222-.349.635-1.163.063-.125.031-.235-.016-.335-.047-.1-.477-1.136-.653-1.558-.172-.41-.343-.353-.477-.36l-.407-.007c-.14 0-.37.052-.564.259-.194.207-.74.722-.74 1.761 0 1.04.76 2.046.866 2.186.107.14 1.495 2.254 3.621 3.157.506.214.901.343 1.21.439.51.16.974.137 1.34.083.41-.06 1.787-.723 2.037-1.423.251-.7.251-1.3.176-1.423-.075-.125-.276-.2-.578-.35z"/></svg>
+        <span>Consultar Catálogo</span>
+    </a>
+
+    <script src="app.js"></script>
+</body>
+</html>
+/* Variables de diseño - Cambia esto para cambiar el 'vibe' de la página */
+:root {
+    --bg-color: #fcfaf7;       /* Blanco cálido/hueso */
+    --text-main: #2b2b2b;      /* Gris casi negro sofisticado */
+    --text-muted: #707070;     /* Gris para descripciones */
+    --accent: #d4b2a7;         /* Rosa pastel viejo / Café suave */
+    --card-bg: #ffffff;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding-bottom: 80px; /* Espacio para el botón flotante */
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.brand-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.brand-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Categorías (Tabs) */
+.categories-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    color: var(--text-main);
+    border-bottom: 1px solid var(--text-main);
+}
+
+/* Grid de Productos */
+.catalog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta de Producto */
+.product-card {
+    background: var(--card-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-wrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.04);
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.product-price {
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.product-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Botón de WhatsApp Flotante */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.05);
+}
+
+.icon-ws {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    let todosLosProductos = [];
+    const grid = document.getElementById('grid-productos');
+    const botonesFiltro = document.querySelectorAll('.tab-btn');
+
+    // 1. Cargar datos desde el JSON externo
+    fetch('productos.json')
+        .then(response => response.json())
+        .then(data => {
+            todosLosProductos = data;
+            renderizarProductos(todosLosProductos);
+        })
+        .catch(error => console.error('Error cargando el catálogo:', error));
+
+    // 2. Función para pintar los productos en el HTML
+    function renderizarProductos(lista) {
+        grid.innerHTML = ''; // Limpiar contenedor
+        
+        if(lista.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No hay productos disponibles en esta categoría.</p>';
+            return;
+        }
+
+        lista.forEach(prod => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image-wrapper">
+                    <img src="${prod.imagen}" alt="${prod.nombre}" class="product-image" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${prod.nombre}</h3>
+                    <p class="product-price">₡${prod.precio}</p>
+                    <p class="product-desc">${prod.descripcion}</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // 3. Lógica para filtrar por pestañas (Tabs)
+    botonesFiltro.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Cambiar clase activa en los botones
+            botonesFiltro.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const categoriaSeleccionada = e.target.getAttribute('data-category');
+
+            if (categoriaSeleccionada === 'todos') {
+                renderizarProductos(todosLosProductos);
+            } else {
+                const filtrados = todosLosProductos.filter(p => p.categoria === categoriaSeleccionada);
+                renderizarProductos(filtrados);
+            }
+        });
+    });
+});
