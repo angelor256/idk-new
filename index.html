@@ -26,20 +26,22 @@
             flex-direction: column;
         }
 
-        /* --- MENÚ DE NAVEGACIÓN --- */
+        /* --- MENÚ DE NAVEGACIÓN REESTILIZADO --- */
         .navbar {
-            background-color: #ffffff;
-            padding: 15px 30px;
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-bottom: 3px solid var(--brand-orange); /* Línea divisoria naranja */
             position: relative;
             z-index: 100;
         }
 
         .nav-logo img {
-            height: 45px;
+            height: 48px;
             width: auto;
             display: block;
         }
@@ -47,72 +49,75 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--brand-blue);
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: all 0.2s;
         }
 
         .nav-link:hover, .nav-link.active { color: var(--brand-orange); }
         
         .nav-link.admin-btn {
             background-color: #f1f5f9;
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             color: #475569;
+            border: 1px solid #cbd5e1;
         }
         .nav-link.admin-btn:hover {
             background-color: var(--brand-blue);
             color: white;
+            border-color: var(--brand-blue);
         }
 
         /* --- SISTEMA DE PESTAÑAS (VISTAS) --- */
         .view-section {
-            display: none; /* Ocultas por defecto */
+            display: none;
             flex-grow: 1;
         }
         
         .view-section.active-view {
-            display: flex; /* Solo la sección activa se muestra */
+            display: flex;
             flex-direction: column;
         }
 
-        /* --- 1. VISTA DE INICIO (PORTADA CORREGIDA A PNG) --- */
+        /* --- 1. VISTA DE INICIO (PORTADA AJUSTADA) --- */
         #vista-inicio {
-            /* Corregido para buscar banner.png exactamente como lo nombraste */
             background: url('banner.png') no-repeat center center;
             background-size: cover;
             align-items: center;
             justify-content: flex-end;
-            padding-bottom: 70px;
+            padding-bottom: 30px; /* Bajamos la posición del botón al extremo inferior */
         }
 
         .cta-button {
             background-color: #ffffff;
             color: var(--brand-blue);
             text-decoration: none;
-            padding: 18px 50px;
-            font-size: 1.2rem;
+            padding: 16px 45px;
+            font-size: 1.15rem;
             font-weight: 800;
             border-radius: 50px;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
             border: 3px solid var(--brand-blue);
             cursor: pointer;
             transition: all 0.2s ease;
+            margin-bottom: 15px;
         }
 
         .cta-button:hover {
             background-color: var(--brand-blue);
             color: white;
             border-color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
         }
 
         /* --- 2. VISTA DE CATÁLOGO PÚBLICO --- */
@@ -160,14 +165,14 @@
         .delete-btn { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
 
         @media (max-width: 768px) {
-            #vista-inicio { background-size: contain; background-position: center 20%; background-color: #ff7a00; padding-bottom: 40px; }
-            .cta-button { font-size: 1rem; padding: 14px 35px; }
+            #vista-inicio { background-size: contain; background-position: center 20%; background-color: #ff7a00; padding-bottom: 20px; }
+            .cta-button { font-size: 0.95rem; padding: 12px 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menú Global -->
+    <!-- Menú Global Reestilizado -->
     <nav class="navbar">
         <div class="nav-logo">
             <img src="farmacia.png" alt="Farmacia El Botiquín">
