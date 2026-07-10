@@ -83,9 +83,10 @@
             flex-direction: column;
         }
 
-        /* --- 1. VISTA DE INICIO (PORTADA FACEBOOK) --- */
+        /* --- 1. VISTA DE INICIO (PORTADA CORREGIDA A PNG) --- */
         #vista-inicio {
-            background: url('608199843_1162481542711823_1638805636273324806_n.jpg') no-repeat center center;
+            /* Corregido para buscar banner.png exactamente como lo nombraste */
+            background: url('banner.png') no-repeat center center;
             background-size: cover;
             align-items: center;
             justify-content: flex-end;
@@ -166,6 +167,7 @@
 </head>
 <body>
 
+    <!-- Menú Global -->
     <nav class="navbar">
         <div class="nav-logo">
             <img src="farmacia.png" alt="Farmacia El Botiquín">
@@ -177,10 +179,12 @@
         </div>
     </nav>
 
+    <!-- PESTAÑA 1: INICIO PÚBLICO -->
     <section id="vista-inicio" class="view-section active-view">
         <button class="cta-button" onclick="cambiarVista('catalogo')">Ingresar al Catálogo</button>
     </section>
 
+    <!-- PESTAÑA 2: CATÁLOGO DIGITAL -->
     <section id="vista-catalogo" class="view-section">
         <div class="catalog-header">
             <h2>Catálogo de Productos</h2>
@@ -195,6 +199,7 @@
         </main>
     </section>
 
+    <!-- PESTAÑA 3: PANEL DE CONTROL (SÓLO ACCESIBLE CON CLAVE) -->
     <section id="vista-admin" class="view-section">
         <div class="admin-wrapper">
             <div class="form-card">
@@ -251,11 +256,11 @@
         </div>
     </section>
 
+    <!-- --- LÓGICA DE CONTROL DE LA WEB --- -->
     <script>
         let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
         let imagenBase64String = "";
 
-        // Cambiar entre pantallas de forma fluida sin recargar
         function cambiarVista(nombreVista) {
             document.querySelectorAll('.view-section').forEach(seccion => {
                 seccion.classList.remove('active-view');
@@ -271,7 +276,6 @@
             }
         }
 
-        // CONTROL DE ACCESO RESTINGIDO: La clave solo salta aquí
         function entrarComoAdmin() {
             const intentoClave = prompt("Módulo Protegido de Farmacia El Botiquín.\nIngrese la clave de administrador:");
             if (intentoClave === "mggi2026") {
@@ -282,7 +286,6 @@
             }
         }
 
-        // Renderizado del Catálogo Comercial Público
         function renderizarCatalogo(lista) {
             const grid = document.getElementById('grid-productos');
             grid.innerHTML = '';
@@ -320,7 +323,6 @@
             });
         }
 
-        // Lógica de carga de archivos (FileReader)
         const fileInput = document.getElementById('imagen-file');
         const previewImg = document.getElementById('preview-img');
         
@@ -337,7 +339,6 @@
             }
         });
 
-        // Tabla de inventario del administrador
         function actualizarTablaAdmin() {
             const tablaCuerpo = document.getElementById('tabla-cuerpo');
             tablaCuerpo.innerHTML = '';
@@ -355,7 +356,6 @@
             });
         }
 
-        // Enviar formulario de nuevo producto
         document.getElementById('form-producto').addEventListener('submit', (e) => {
             e.preventDefault();
             const nuevo = {
@@ -378,7 +378,6 @@
             alert('¡Producto agregado al catálogo!');
         });
 
-        // Eliminar productos
         document.getElementById('tabla-cuerpo').addEventListener('click', (e) => {
             if(e.target.classList.contains('delete-btn')) {
                 const index = e.target.getAttribute('data-index');
@@ -390,7 +389,6 @@
             }
         });
 
-        // Filtros de categorías comerciales
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
