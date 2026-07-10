@@ -26,16 +26,15 @@
             flex-direction: column;
         }
 
-        /* --- MENÚ DE NAVEGACIÓN REESTILIZADO --- */
+        /* --- BARRA SUPERIOR AZUL OSCURO --- */
         .navbar {
-            background-color: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
+            background-color: var(--brand-blue) !important; /* Forzamos el color azul de la marca */
             padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border-bottom: 3px solid var(--brand-orange); /* Línea divisoria naranja */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-bottom: 4px solid var(--brand-orange); /* Línea divisoria naranja */
             position: relative;
             z-index: 100;
         }
@@ -44,6 +43,9 @@
             height: 48px;
             width: auto;
             display: block;
+            background: white; /* Fondo blanco sutil detrás del logo por si es transparente */
+            padding: 4px;
+            border-radius: 6px;
         }
 
         .nav-menu {
@@ -52,28 +54,31 @@
             gap: 24px;
         }
 
+        /* Enlaces en blanco para contrastar con la barra azul */
         .nav-link {
             text-decoration: none;
-            color: var(--brand-blue);
+            color: #ffffff; 
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .nav-link:hover, .nav-link.active { color: var(--brand-orange); }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--brand-orange); 
+        }
         
         .nav-link.admin-btn {
-            background-color: #f1f5f9;
+            background-color: rgba(255, 255, 255, 0.15);
             padding: 8px 16px;
             border-radius: 8px;
-            color: #475569;
-            border: 1px solid #cbd5e1;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .nav-link.admin-btn:hover {
-            background-color: var(--brand-blue);
+            background-color: var(--brand-orange);
             color: white;
-            border-color: var(--brand-blue);
+            border-color: var(--brand-orange);
         }
 
         /* --- SISTEMA DE PESTAÑAS (VISTAS) --- */
@@ -87,13 +92,13 @@
             flex-direction: column;
         }
 
-        /* --- 1. VISTA DE INICIO (PORTADA AJUSTADA) --- */
+        /* --- 1. VISTA DE INICIO (PORTADA) --- */
         #vista-inicio {
             background: url('banner.png') no-repeat center center;
             background-size: cover;
             align-items: center;
             justify-content: flex-end;
-            padding-bottom: 30px; /* Bajamos la posición del botón al extremo inferior */
+            padding-bottom: 30px; /* Mantener abajo el botón */
         }
 
         .cta-button {
@@ -172,7 +177,7 @@
 </head>
 <body>
 
-    <!-- Menú Global Reestilizado -->
+    <!-- Menú Global con Contraste Directo -->
     <nav class="navbar">
         <div class="nav-logo">
             <img src="farmacia.png" alt="Farmacia El Botiquín">
@@ -204,7 +209,7 @@
         </main>
     </section>
 
-    <!-- PESTAÑA 3: PANEL DE CONTROL (SÓLO ACCESIBLE CON CLAVE) -->
+    <!-- PESTAÑA 3: PANEL DE CONTROL -->
     <section id="vista-admin" class="view-section">
         <div class="admin-wrapper">
             <div class="form-card">
@@ -261,7 +266,7 @@
         </div>
     </section>
 
-    <!-- --- LÓGICA DE CONTROL DE LA WEB --- -->
+    <!-- --- LÓGICA DE CONTROL --- -->
     <script>
         let productos = JSON.parse(localStorage.getItem('productos_botiquin')) || [];
         let imagenBase64String = "";
@@ -301,7 +306,7 @@
             }
 
             lista.forEach(prod => {
-                const numeroTelefono = "50688888888"; // Modifica por tu WhatsApp real
+                const numeroTelefono = "50688888888"; 
                 const tieneStock = parseInt(prod.stock) > 0;
                 const stockMsg = tieneStock ? `Disponibles: ${prod.stock} uds.` : "Producto Agotado";
                 
